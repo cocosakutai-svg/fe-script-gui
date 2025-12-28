@@ -1,0 +1,345 @@
+-- ⚡ FE SCRIPT HUB - GitHub版 ⚡
+-- 使用方法: loadstring(game:HttpGet("あなたのGitHub Raw URL"))()
+
+-- Fluent UI Library ロード
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+-- ウィンドウ作成
+local Window = Fluent:CreateWindow({
+    Title = "⚡ FE SCRIPT HUB ⚡",
+    SubTitle = "4 Premium FE Scripts",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true,
+    Theme = "Darker",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+-- タブ作成
+local Tabs = {
+    FE1 = Window:AddTab({ Title = "🔧 FE Script 1", Icon = "zap" }),
+    FE2 = Window:AddTab({ Title = "🔧 FE Script 2", Icon = "star" }),
+    FE3 = Window:AddTab({ Title = "🔧 FE Script 3", Icon = "flame" }),
+    FE4 = Window:AddTab({ Title = "🔧 FE Script 4", Icon = "shield" })
+}
+
+-- プレイヤー情報
+local player = game.Players.LocalPlayer
+
+-- チャット送信関数
+local function sendChat(message)
+    local success, err = pcall(function()
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+    end)
+    if not success then
+        pcall(function()
+            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
+        end)
+    end
+end
+
+-- ==================== FE Script 1 ====================
+Tabs.FE1:AddParagraph({
+    Title = "🔧 FE Script 1",
+    Content = "Qwerty Script 65 - 高度なFE対応スクリプト"
+})
+
+Tabs.FE1:AddButton({
+    Title = "▶️ スクリプト実行",
+    Description = "Qwerty 65を読み込んで実行",
+    Callback = function()
+        Fluent:Notify({
+            Title = "⏳ 読み込み中",
+            Content = "FE Script 1を実行しています...",
+            Duration = 3
+        })
+        
+        local success, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty65.lua"))()
+        end)
+        
+        if success then
+            Fluent:Notify({
+                Title = "✅ 成功",
+                Content = "FE Script 1を正常に実行しました",
+                Duration = 5
+            })
+        else
+            Fluent:Notify({
+                Title = "❌ エラー",
+                Content = "スクリプトの実行に失敗しました",
+                Duration = 5
+            })
+        end
+    end
+})
+
+-- ==================== FE Script 2 ====================
+Tabs.FE2:AddParagraph({
+    Title = "🔧 FE Script 2",
+    Content = "Qwerty Script 63 - 自動コマンド送信機能付き"
+})
+
+Tabs.FE2:AddButton({
+    Title = "▶️ スクリプト実行",
+    Description = "Qwerty 63を読み込んで実行",
+    Callback = function()
+        Fluent:Notify({
+            Title = "⏳ 読み込み中",
+            Content = "FE Script 2を実行しています...",
+            Duration = 3
+        })
+        
+        local success, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty63.lua"))()
+        end)
+        
+        if success then
+            Fluent:Notify({
+                Title = "✅ 成功",
+                Content = "FE Script 2を正常に実行しました",
+                Duration = 5
+            })
+        else
+            Fluent:Notify({
+                Title = "❌ エラー",
+                Content = "スクリプトの実行に失敗しました",
+                Duration = 5
+            })
+        end
+    end
+})
+
+Tabs.FE2:AddButton({
+    Title = "📢 自動コマンド送信",
+    Description = "指定されたコマンドをチャットに送信",
+    Callback = function()
+        Fluent:Notify({
+            Title = "📢 送信開始",
+            Content = "コマンドを送信しています...",
+            Duration = 3
+        })
+        
+        wait(0.5)
+        sendChat("-gh 75133535004735")
+        
+        Fluent:Notify({
+            Title = "✅ 送信完了",
+            Content = "コマンド: -gh 75133535004735",
+            Duration = 5
+        })
+    end
+})
+
+Tabs.FE2:AddToggle("AutoCommand2", {
+    Title = "🔄 自動コマンド送信（連続）",
+    Description = "定期的にコマンドを送信",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoCommand2 = Value
+        spawn(function()
+            while _G.AutoCommand2 do
+                sendChat("-gh 75133535004735")
+                wait(10)
+            end
+        end)
+        
+        if Value then
+            Fluent:Notify({
+                Title = "🔄 自動送信ON",
+                Content = "10秒ごとにコマンドを送信します",
+                Duration = 3
+            })
+        else
+            Fluent:Notify({
+                Title = "⏹️ 自動送信OFF",
+                Content = "自動送信を停止しました",
+                Duration = 3
+            })
+        end
+    end
+})
+
+-- ==================== FE Script 3 ====================
+Tabs.FE3:AddParagraph({
+    Title = "🔧 FE Script 3",
+    Content = "Qwerty Script 6 - 強力なFE機能"
+})
+
+Tabs.FE3:AddButton({
+    Title = "▶️ スクリプト実行",
+    Description = "Qwerty 6を読み込んで実行",
+    Callback = function()
+        Fluent:Notify({
+            Title = "⏳ 読み込み中",
+            Content = "FE Script 3を実行しています...",
+            Duration = 3
+        })
+        
+        local success, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/qwertys/refs/heads/main/qwerty6.lua"))()
+        end)
+        
+        if success then
+            Fluent:Notify({
+                Title = "✅ 成功",
+                Content = "FE Script 3を正常に実行しました",
+                Duration = 5
+            })
+        else
+            Fluent:Notify({
+                Title = "❌ エラー",
+                Content = "スクリプトの実行に失敗しました",
+                Duration = 5
+            })
+        end
+    end
+})
+
+-- ==================== FE Script 4 ====================
+Tabs.FE4:AddParagraph({
+    Title = "🔧 FE Script 4",
+    Content = "Qwerty Script 10 - 複数コマンド自動送信機能付き"
+})
+
+Tabs.FE4:AddButton({
+    Title = "▶️ スクリプト実行",
+    Description = "Qwerty 10を読み込んで実行",
+    Callback = function()
+        Fluent:Notify({
+            Title = "⏳ 読み込み中",
+            Content = "FE Script 4を実行しています...",
+            Duration = 3
+        })
+        
+        local success, err = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/qwertys/refs/heads/main/qwerty10.lua"))()
+        end)
+        
+        if success then
+            Fluent:Notify({
+                Title = "✅ 成功",
+                Content = "FE Script 4を正常に実行しました",
+                Duration = 5
+            })
+        else
+            Fluent:Notify({
+                Title = "❌ エラー",
+                Content = "スクリプトの実行に失敗しました",
+                Duration = 5
+            })
+        end
+    end
+})
+
+Tabs.FE4:AddButton({
+    Title = "📢 全コマンド一括送信",
+    Description = "7つのコマンドを順番に送信",
+    Callback = function()
+        Fluent:Notify({
+            Title = "📢 送信開始",
+            Content = "7つのコマンドを送信しています...",
+            Duration = 3
+        })
+        
+        local commands = {
+            "-gh 139904067056008",
+            "-gh 108186273151388",
+            "-gh 72292903231768",
+            "-gh 84451219120140",
+            "-gh 95290698984301",
+            "-gh 14254923976",
+            "-gh 17163596085"
+        }
+        
+        for i, cmd in ipairs(commands) do
+            wait(0.5)
+            sendChat(cmd)
+        end
+        
+        Fluent:Notify({
+            Title = "✅ 送信完了",
+            Content = "7つのコマンドを送信しました",
+            Duration = 5
+        })
+    end
+})
+
+Tabs.FE4:AddToggle("AutoCommand4", {
+    Title = "🔄 自動コマンド送信（連続）",
+    Description = "定期的に7つのコマンドを送信",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoCommand4 = Value
+        spawn(function()
+            local commands = {
+                "-gh 139904067056008",
+                "-gh 108186273151388",
+                "-gh 72292903231768",
+                "-gh 84451219120140",
+                "-gh 95290698984301",
+                "-gh 14254923976",
+                "-gh 17163596085"
+            }
+            
+            while _G.AutoCommand4 do
+                for i, cmd in ipairs(commands) do
+                    if not _G.AutoCommand4 then break end
+                    sendChat(cmd)
+                    wait(0.5)
+                end
+                wait(15)
+            end
+        end)
+        
+        if Value then
+            Fluent:Notify({
+                Title = "🔄 自動送信ON",
+                Content = "15秒ごとに全コマンドを送信します",
+                Duration = 3
+            })
+        else
+            Fluent:Notify({
+                Title = "⏹️ 自動送信OFF",
+                Content = "自動送信を停止しました",
+                Duration = 3
+            })
+        end
+    end
+})
+
+-- コマンド個別送信ボタン
+local commands = {
+    {name = "コマンド1", cmd = "-gh 139904067056008"},
+    {name = "コマンド2", cmd = "-gh 108186273151388"},
+    {name = "コマンド3", cmd = "-gh 72292903231768"},
+    {name = "コマンド4", cmd = "-gh 84451219120140"},
+    {name = "コマンド5", cmd = "-gh 95290698984301"},
+    {name = "コマンド6", cmd = "-gh 14254923976"},
+    {name = "コマンド7", cmd = "-gh 17163596085"}
+}
+
+for i, data in ipairs(commands) do
+    Tabs.FE4:AddButton({
+        Title = "📤 " .. data.name,
+        Description = data.cmd,
+        Callback = function()
+            sendChat(data.cmd)
+            Fluent:Notify({
+                Title = "✅ 送信",
+                Content = data.cmd,
+                Duration = 3
+            })
+        end
+    })
+end
+
+-- 初期化完了通知
+Fluent:Notify({
+    Title = "⚡ FE SCRIPT HUB ⚡",
+    Content = "4つのFEスクリプトが準備完了！",
+    Duration = 5
+})
+
+print("FE Script Hub loaded successfully!")
+print("GitHub版: loadstring(game:HttpGet('YOUR_URL_HERE'))()")
